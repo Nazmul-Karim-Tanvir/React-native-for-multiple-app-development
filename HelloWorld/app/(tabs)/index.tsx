@@ -1,9 +1,16 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
+import ListItem from '../../components/ListItem/ListItem';
 
 export default function HomeScreen() {
-  const [inputValue, setInputValue] = useState("");
-  const [placeList, setPlaceList] = useState([]);
+  const [inputValue, setInputValue] = useState<string>("");
+  const [placeList, setPlaceList] = useState<string[]>([]);
+  const list = placeList.map((item, i) => {
+    return (
+      <ListItem placeName={item} key={i} />
+    )
+  })
+
   return (
     <View style={styles.container}>
       <View style={styles.inputView}>
@@ -25,6 +32,9 @@ export default function HomeScreen() {
             }
           }}
         />
+      </View>
+      <View style={{ width: "100%" }}>
+        {list}
       </View>
     </View>
   );

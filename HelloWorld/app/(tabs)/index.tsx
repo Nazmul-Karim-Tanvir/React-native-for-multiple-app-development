@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, TextInput, Button } from 'react-native';
 import ListItem from '../../components/ListItem/ListItem';
 
 export default function HomeScreen() {
@@ -7,7 +7,7 @@ export default function HomeScreen() {
   const [placeList, setPlaceList] = useState<string[]>([]);
   const list = placeList.map((item, i) => {
     return (
-      <ListItem placeName={item} key={i} />
+      <ListItem placeName={item} key={i} onItemPressed={()=> alert(item)}/>
     )
   })
 
@@ -33,9 +33,9 @@ export default function HomeScreen() {
           }}
         />
       </View>
-      <View style={{ width: "100%" }}>
+      <ScrollView style={{ width: "100%" }}>
         {list}
-      </View>
+      </ScrollView>
     </View>
   );
 }

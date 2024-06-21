@@ -1,13 +1,23 @@
 import React from 'react';
-import {View, Text ,StyleSheet} from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Pressable } from 'react-native';
 
 const ListItem = props => {
-    return(
-        <View style={styles.ListItem}>
-            <Text>
-                {props.placeName}
-            </Text>
-        </View>
+    return (
+        <TouchableOpacity  onLongPress={props.onItemPressed}>
+            <View style={styles.ListItem}>
+                <Text>
+                    {props.placeName}
+                </Text>
+            </View>
+        </TouchableOpacity>
+
+        // <Pressable onPress={props.onItemPressed}>
+        //     <View style={styles.ListItem}>
+        //         <Text>
+        //             {props.placeName}
+        //         </Text>
+        //     </View>
+        // </Pressable>
     )
 }
 const styles = StyleSheet.create({
@@ -20,6 +30,6 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         margin: '10px',
     }
-  });
+});
 
 export default ListItem;

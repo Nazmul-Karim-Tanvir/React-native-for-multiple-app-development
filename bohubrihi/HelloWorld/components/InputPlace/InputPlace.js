@@ -1,6 +1,5 @@
-import React from 'react'
+import React from 'react';
 import { View, TextInput, Button, StyleSheet } from 'react-native';
-
 
 const InputPlace = props => {
     return (
@@ -9,7 +8,7 @@ const InputPlace = props => {
                 style={{
                     width: "80%",
                     borderBottomWidth: 1,
-                    borderColor: 'green',
+                    borderColor: "green",
                     padding: 7
                 }}
                 placeholder="Add a Place.."
@@ -17,25 +16,26 @@ const InputPlace = props => {
                 onChangeText={text => props.setInputValue(text)}
             />
             <Button
-                title='Add'
+                title="Add"
                 onPress={() => {
                     if (props.inputValue !== "") {
-                        props.setPlaceList([...props.placelist, { key: Math.random().toString(), value: props.inputValue }])
+                        props.setPlaceList([...props.placeList, { key: Math.random().toString(), value: props.inputValue }])
                     }
                 }}
             />
         </View>
-    )
+    );
 }
+
 const styles = StyleSheet.create({
     inputView: {
         padding: 20,
         width: "100%",
-        margintop: 50,
+        marginTop: 50,
         flexDirection: 'row',
         justifyContent: 'space-between',
-        alignItems: 'center',
+        alignItems: 'center'
     }
 });
 
-export default InputPlace
+export default InputPlace;

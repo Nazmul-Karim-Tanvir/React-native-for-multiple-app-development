@@ -39,7 +39,7 @@ export default function App() {
           return (
             <ListItem
               placeName={info.item.value}
-              onItemPressed={() => alert(item.info.value)}
+              onItemPressed={() => alert(info.item.value)}
             />
           )
         }}

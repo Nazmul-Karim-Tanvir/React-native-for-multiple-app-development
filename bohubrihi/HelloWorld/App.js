@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, Button, ScrollView, FlatList } from 'react-native';
 import ListItem from './components/Listitem/Listitem';
+import InputPlace from './components/InputPlace/InputPlace';
 
 export default function App() {
   const [inputValue, setInputValue] = useState("");
@@ -9,28 +10,12 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-
-      <View style={styles.inputView}>
-        <TextInput
-          style={{
-            width: "80%",
-            borderBottomWidth: 1,
-            borderColor: 'green',
-            padding: 7
-          }}
-          placeholder="Add a Place.."
-          value={inputValue}
-          onChangeText={text => setInputValue(text)}
-        />
-        <Button
-          title='Add'
-          onPress={() => {
-            if (inputValue !== "") {
-              setPlaceList([...placelist, { key: Math.random().toString(), value: inputValue }])
-            }
-          }}
-        />
-      </View>
+      <InputPlace
+      inputValue={inputValue}
+      setInputValue={setInputValue}
+      placelist={placelist}
+      setPlaceList={setPlaceList}
+      />
       <FlatList style={{
         width: "100%"
       }}
@@ -56,13 +41,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-start',
     flexDirection: 'column',
-  },
-  inputView: {
-    padding: 20,
-    width: "100%",
-    margintop: 50,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
   }
 });

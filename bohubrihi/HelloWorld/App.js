@@ -1,18 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, Button, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, ScrollView, FlatList } from 'react-native';
 import ListItem from './components/Listitem/Listitem';
 
 export default function App() {
   const [inputValue, setInputValue] = useState("");
   const [placelist, setPlaceList] = useState([]);
-  const list = placelist.map((item, i) => {
-    return (
-      <ListItem placeName={item} key={i} onItemPressed={() => alert(item)} />
-    )
-  })
+
   return (
     <View style={styles.container}>
+
       <View style={styles.inputView}>
         <TextInput
           style={{
@@ -29,16 +26,22 @@ export default function App() {
           title='Add'
           onPress={() => {
             if (inputValue !== "") {
-              setPlaceList([...placelist, inputValue])
+              setPlaceList([...placelist, { key: Math.random().toString(), value: inputValue }])
             }
           }}
         />
       </View>
-      <ScrollView style={{
+      <FlatList style={{
         width: "100%"
-      }}>
-        {list}
-      </ScrollView>
+      }}
+        data={placelist}
+        renderItem={info => {
+          return (
+            <ListItem placeName={info.item.value} onItemPressed={() => alert(item.info.value)} />
+          )
+        }}
+      />
+
     </View>
   );
 }

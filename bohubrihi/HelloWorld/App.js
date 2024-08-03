@@ -37,7 +37,10 @@ export default function App() {
         data={placelist}
         renderItem={info => {
           return (
-            <ListItem placeName={info.item.value} onItemPressed={() => alert(item.info.value)} />
+            <ListItem
+              placeName={info.item.value}
+              onItemPressed={() => alert(item.info.value)}
+            />
           )
         }}
       />
